@@ -4,10 +4,7 @@ var Student = mongoose.model('User', {
     name: {
         required: true,
         type: String,
-        trim: true,
-        index: {
-            unique: true
-        },
+        trim: true
     },
     email: {
         required: true,
@@ -31,6 +28,10 @@ var Student = mongoose.model('User', {
         required: true,
         type: String,
         trim: true,
+    },
+    rollNo: {
+        required: true,
+        type: Number
     },
     lectureIds: {
         type: Array,

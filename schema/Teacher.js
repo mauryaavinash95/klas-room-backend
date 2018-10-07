@@ -1,14 +1,11 @@
 var mongoose = require('mongoose');
 
 var Teacher = mongoose.model('Teacher', {
-   
+
     name: {
         required: true,
         type: String,
-        trim: true,
-        index: {
-            unique: true
-        },
+        trim: true
     },
     email: {
         required: true,

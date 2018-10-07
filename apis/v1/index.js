@@ -1,7 +1,7 @@
 const v1Router = require('express').Router();
 
-const student = require('./student/index');
+const login = require('./login/index');
 
-v1Router.use('/student', student);
+v1Router.use('/login', login);
 
 module.exports = v1Router;
