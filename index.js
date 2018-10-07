@@ -1,9 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const {
-    router
-} = require('./apis/v1/index.js');
+const router = require('./apis/v1/index.js');
 
 let app = new express();
 app.use(cors());

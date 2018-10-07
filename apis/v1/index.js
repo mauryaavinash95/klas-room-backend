@@ -1,16 +1,7 @@
+const v1Router = require('express').Router();
 
-const router = require('express').Router();
-const expressJoi = require('express-joi-validator');
-const validator = require('./validator');
-const handler = require('./handler');
+const student = require('./student/index');
 
-// User Signup
-router.post('/signup', expressJoi(validator.signup), handler.signup);
+v1Router.use('/student', student);
 
-// User signin
-router.post('/signin', expressJoi(validator.signin), handler.signin);
-
-// User search
-// router.get('/search', expressJoi(validator.searchUser), handler.searchUser);
-
-module.exports = { router }
+module.exports = v1Router;

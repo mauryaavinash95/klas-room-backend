@@ -9,16 +9,18 @@ const Logger = require('bunyan');
 const log = new Logger({
     name: 'klas-room',
     streams: [{
-            level: 'info',
-            stream: process.stdout // log INFO and above to stdout
-        },
-        {
-            level: 'error',
-            path: '/tmp/klas-toom.log' // log ERROR and above to a file
-        }
+        level: 'info',
+        stream: process.stdout // log INFO and above to stdout
+    },
+    {
+        level: 'error',
+        path: '/tmp/klas-toom.log' // log ERROR and above to a file
+    }
     ]
 });
 
+// DB Wrapper to setup connections
+const { dbInit } = require('./db/dbWrapper');
 
 
 global.db = {};
@@ -38,4 +40,12 @@ const bootServer = () => server.listen(port, conf.ip, function (error) {
     log.info('Express is listening on http://' + conf.ip + ':' + port);
 });
 
-bootServer();
+dbInit(conf)
+    .then(() => {
+        bootServer();
+    })
+    .catch(err => {
+        console.log("Error while starting up db server: ", error);
+        log.error('Unable to listen for connections', error);
+        process.exit(0);
+    })

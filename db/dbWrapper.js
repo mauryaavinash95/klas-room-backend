@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-function dbInit(configPath) {
-    const mongoAuth = configPath ? require(configPath) : null;
+function dbInit(conf) {
+    const mongoAuth = conf ? conf.mongo : null;
     return new Promise((resolve, reject) => {
         mongoose.Promise = global.Promise;
         let mongoRoute = "mongodb://localhost:27017";
