@@ -5,10 +5,8 @@ module.exports.signup = {
         name: Joi.string().required().trim(),
         email: Joi.string().required().trim(),
         password: Joi.string().required().trim(),
-        class: Joi.string().required().trim(),
-        division: Joi.string().required().trim(),
-        lectureIds: Joi.array(),
-        token: Joi.string().required().trim()
+        year: Joi.string().required().trim(),
+        division: Joi.string().required().trim()
     }).required()
 };
 

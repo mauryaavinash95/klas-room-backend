@@ -26,6 +26,10 @@ app.use("/", (request, response, next) => {
     next();
 })
 
+app.get("/test", (request, response, next) => {
+    response.sendJson("You're on test api", 200);
+})
+
 io.on('connection', (socket) => {
     console.log("New user connected");
     socket.on('join', (params, callback) => {

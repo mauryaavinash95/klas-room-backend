@@ -1,11 +1,6 @@
 var mongoose = require('mongoose');
 
-var User = mongoose.model('User', {
-    role: {
-        required: true,
-        type: String,
-        trim: true,
-    },
+var Student = mongoose.model('User', {
     name: {
         required: true,
         type: String,
@@ -27,6 +22,20 @@ var User = mongoose.model('User', {
         type: String,
         trim: true,
     },
+    year: {
+        required: true,
+        type: String,
+        trim: true,
+    },
+    division: {
+        required: true,
+        type: String,
+        trim: true,
+    },
+    lectureIds: {
+        type: Array,
+        default: []
+    },
     token: {
         required: true,
         type: String,
@@ -36,9 +45,10 @@ var User = mongoose.model('User', {
         required: true,
         trim: true,
         type: Date,
+        default: new Date()
     }
 });
 
 module.exports = {
-    User,
+    Student
 }
