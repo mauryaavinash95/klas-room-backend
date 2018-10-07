@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-var Student = mongoose.model('User', {
+var Teacher = mongoose.model('Teacher', {
+
     name: {
         required: true,
         type: String,
@@ -19,23 +20,10 @@ var Student = mongoose.model('User', {
         type: String,
         trim: true,
     },
-    year: {
+    employeeId: {
         required: true,
         type: String,
         trim: true,
-    },
-    division: {
-        required: true,
-        type: String,
-        trim: true,
-    },
-    rollNo: {
-        required: true,
-        type: Number
-    },
-    lectureIds: {
-        type: Array,
-        default: []
     },
     token: {
         required: true,
@@ -46,10 +34,9 @@ var Student = mongoose.model('User', {
         required: true,
         trim: true,
         type: Date,
-        default: new Date()
     }
 });
 
 module.exports = {
-    Student
+    Teacher,
 }
