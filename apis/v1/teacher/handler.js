@@ -1,28 +1,13 @@
-const { createChannel } = require('../../../models/createChannel');
-const { createLecture } = require('../../../models/createLecture');
+const { createLecture } = require('../../../models/createLecture.js');
 
-
-module.exports.createChannel = async (request, response) => {
-    //TODO
-    let { subName, year, division, dept } = request.body;
+//create a lecture and channel and returns channelId
+module.exports.createlecture = async (request, response) => {
+    let { subId, year, division, teacherId } = request.body;
     try {
-        let res = await createChannel({ subName, year, division, dept });
-        delete res.password;
-        response.sendJson({ message: "Created successfully", ...res }, 200);
+        let res = await createLecture({ subId, year, division, teacherId });
+        console.log(res,"res :")
+        response.sendJson({ id: res["_doc"]["_id"], message: "Created Lecture and Channel successfully" }, 200);
     } catch (err) {
-        global.logs.error(err);
-        response.sendJson(err.toString(), 404)
-    }
-};
-
-module.exports.createLecture = async (request, response) => {
-    let { id, subName, year, division, teacherId } = request.body;
-    try {
-        let res = await createLecture({ id, subName, year, division, teacherId });
-        delete res.password;
-        response.sendJson({ message: "Created Lecture successfully", ...res }, 200);
-    } catch (err) {
-        global.logs.error(err);
         response.sendJson(err.toString(), 404)
     }
 };

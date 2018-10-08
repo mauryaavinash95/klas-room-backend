@@ -1,22 +1,15 @@
 var mongoose = require('mongoose');
 
 var Lecture = mongoose.model('Lecture', {
-    id: {
+   
+    subId: {
         required: true,
-        type: String,
-        trim: true,
-        index: {
-            unique: true
-        },
-    },
-    SubName: {
-        required: true,
-        type: String,
+        type: Number,
         trim: true
     },
     year: {
         required: true,
-        type: String,
+        type: Number,
         trim: true,
     },
     division: {

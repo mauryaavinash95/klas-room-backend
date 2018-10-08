@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 
 var Channel = mongoose.model('Channel', {
-   
-
     teacherId: {
         required: true,
         type: String,
